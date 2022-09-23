@@ -1,0 +1,77 @@
+@startuml Fortech - Sistema de gestão de Manutenção de eletrônicos
+
+class Usuario {
+    - id: int
+    - nome: String
+    - cpf: String
+    - rg: String
+    - email: String
+    - senha: String
+    - dataNascimento: DateTime
+}
+
+enum Perfil {
+    + CLIENTE
+    + GESTOR
+}
+
+class Endereco {
+    - id: int
+    - cep: String
+    - rua: String
+    - numero: String
+    - bairro: String
+    - complemento: String
+    - cidade: String
+    - estado: String
+}
+
+class SolicitacaoServico {
+    - id: int
+    - nome: String
+    - detalhes: String
+    - valor: decimal
+}
+
+class Eletronico {
+    - id: int
+    - nome: String
+    - modelo: String
+    - marca: String
+    - numeroNotaFiscal: String
+    - dataFabricao: DateTime
+    - detalhes: String
+    - foto: String
+    - observacoes: String
+}
+
+Usuario "*" o-left-> "1" Perfil
+Usuario "1" *-down-> "1" Endereco
+Usuario "1" *-> "*" SolicitacaoServico
+SolicitacaoServico "1" *-> "1" Eletronico
+
+@enduml
+
+O sistema deve permitir a gestão de serviços de uma loja de serviços de manutenção de eletrônicos,
+ou seja, registrar os clientes e os serviços prestados. Para realizar a gestão o usuário deve estar cadastrado e ativo.
+ Além disso, poderemos realizar no sistema
+
+Cadastro de gestores
+
+- Dados pessoais (nome completo, endereço completo, e-mail, senha, data de nascimento, RG, CPF).
+
+Cadastro do cliente
+
+Dados pessoais (nome completo, endereço completo, e-mail, senha, data de nascimento, RG, CPF)
+
+Endereço (Endereço, Número, Complemento, Bairro, Cidade, Estado, CEP)
+
+Cadastrar serviços (nome, detalhes, valor)
+
+Cadastro do(s) eletrônicos (nome, modelo, marca, número da nota fiscal, data de fabricação, detalhes, foto (plus), observações)
+
+O sistema deve permitir realizar o agendamento de serviços para o cliente eletrônicos.
+
+Ao logar no sistema o usuário deve ter acesso a informações sobre o total de manutenções registradas e uma lista das marcas atendidas
+
+Além disso, deve ser possível realizar o logoff e ter acesso ao menu ajuda.
