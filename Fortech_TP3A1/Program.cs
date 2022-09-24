@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Fortech_TP3A1.Model;
+using System;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Data.Entity;
 using System.Windows.Forms;
 
 namespace Fortech_TP3A1
@@ -17,6 +17,26 @@ namespace Fortech_TP3A1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+        }
+    }
+
+    public class FortechContext : DbContext
+    {
+        public FortechContext() : base("name=ConnectionString")
+        {
+        }
+        public DbSet<Usuario> usuario { get; set; }
+
+        public DbSet<Endereco> endereco { get; set; }
+
+        public DbSet<Eletronico> eletronico { get; set; }
+
+        public DbSet<SolicitacaoServico>  solicitacaoServico { get; set; }
+
+        
+        protected override void OnModelCreating(DbModelBuilder dbModelBuilder)
+        {
+            dbModelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
     }
 }

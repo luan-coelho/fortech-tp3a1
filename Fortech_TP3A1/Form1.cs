@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Fortech_TP3A1
@@ -15,6 +8,18 @@ namespace Fortech_TP3A1
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btLogin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AcessoForm acessoForm = new AcessoForm();
+            acessoForm.Show();
         }
     }
 }

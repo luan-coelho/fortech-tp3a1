@@ -8,11 +8,7 @@ class Usuario {
     - email: String
     - senha: String
     - dataNascimento: DateTime
-}
-
-enum Perfil {
-    + CLIENTE
-    + GESTOR
+    - admin: bool
 }
 
 class Endereco {
@@ -45,7 +41,6 @@ class Eletronico {
     - observacoes: String
 }
 
-Usuario "*" o-left-> "1" Perfil
 Usuario "1" *-down-> "1" Endereco
 Usuario "1" *-> "*" SolicitacaoServico
 SolicitacaoServico "1" *-> "1" Eletronico
