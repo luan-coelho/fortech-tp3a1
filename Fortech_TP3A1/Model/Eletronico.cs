@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Fortech_TP3A1.Model
 {
@@ -24,8 +18,6 @@ namespace Fortech_TP3A1.Model
         public string dataFabricao { get; set; }
         
         public string detalhes { get; set; }
-        
-        public string foto { get; set; }
         
         public string observacoes { get; set; }
     }

@@ -25,13 +25,16 @@ namespace Fortech_TP3A1
         public FortechContext() : base("name=ConnectionString")
         {
         }
+
         public DbSet<Usuario> usuario { get; set; }
 
         public DbSet<Endereco> endereco { get; set; }
 
         public DbSet<Eletronico> eletronico { get; set; }
 
-        public DbSet<SolicitacaoServico>  solicitacaoServico { get; set; }
+        public DbSet<SolicitacaoServico> solicitacaoServico { get; set; }
+        
+        public DbSet<Log> log { get; set; }
 
         
         protected override void OnModelCreating(DbModelBuilder dbModelBuilder)

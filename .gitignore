@@ -375,4 +375,6 @@ Temporary Items
 InteropTests/NativeTests/out
 /src/System.Windows.Forms/src/comctl32.dll
 *.received.*
+/fortech-tp3a1/Fortech_TP3A1/App.config
 /Fortech_TP3A1/App.config
+/App.config
