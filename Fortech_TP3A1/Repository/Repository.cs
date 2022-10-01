@@ -2,7 +2,7 @@
 
 namespace Fortech_TP3A1.Repository
 {
-    public interface Repository <T>
+    public interface IRepository <T>
     {
         List <T> BuscarTodos();
         void Salvar(T objeto);

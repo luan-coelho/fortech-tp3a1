@@ -1,39 +1,34 @@
-﻿using Fortech_TP3A1.Model;
-using Fortech_TP3A1.Repository;
-using System;
+﻿using System;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Fortech_TP3A1.Model;
+using Fortech_TP3A1.Repository;
 
-namespace Fortech_TP3A1
+namespace Fortech_TP3A1.Forms
 {
     public partial class CadastrarForm : Form
     {
         public CadastrarForm()
         {
             InitializeComponent();
-            if (rdPessoaFisica.Checked)
-            {
-                lbCnpj.Hide();
-                txCnpj.Hide();
-            }
+            if (!rdPessoaFisica.Checked) return;
+            lbCnpj.Hide();
+            txCnpj.Hide();
         }
 
         private void btCadastrar_Click(object sender, EventArgs e)
         {
-            UsuarioRepository usuarioRepository = new UsuarioRepository();
+            var usuarioRepository = new UsuarioRepository();
 
-            FortechContext db = new FortechContext();
-            Usuario usuario = new Usuario(txNome.Text, txEmail.Text, txConfirmarSenha.Text, txCpf.Text, txRg.Text, txCnpj.Text, dtpNascimento.Value, true);
+            var usuario = new Usuario(txNome.Text, txEmail.Text, txConfirmarSenha.Text, txCpf.Text, txRg.Text, txCnpj.Text, dtpNascimento.Value, true);
 
             try
             {
-                if (validarCampos())
-                {
-                    usuarioRepository.Salvar(usuario);
-                    limparFormulario();
-                    MessageBox.Show("Você foi cadastrado com sucesso!", "Parabéns!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                if (!ValidarCampos()) return;
+                usuarioRepository.Salvar(usuario);
+                LimparFormulario();
+                MessageBox.Show("Você foi cadastrado com sucesso!", "Parabéns!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (SqlException)
             {
@@ -42,7 +37,7 @@ namespace Fortech_TP3A1
 
         }
 
-        public void limparFormulario()
+        private void LimparFormulario()
         {
             txNome.Text = txCpf.Text = txEmail.Text = txRg.Text = txSenha.Text = txConfirmarSenha.Text = txCnpj.Text = "";
         }
@@ -55,6 +50,8 @@ namespace Fortech_TP3A1
             txRg.Show();
             lbCnpj.Hide();
             txCnpj.Hide();
+            lbNascimento.Show();
+            dtpNascimento.Show();
         }
 
         private void rdPessoaJuridica_Click(object sender, EventArgs e)
@@ -65,20 +62,22 @@ namespace Fortech_TP3A1
             txCpf.Hide();
             lbRg.Hide();
             txRg.Hide();
+            lbNascimento.Hide();
+            dtpNascimento.Hide();
         }
 
-        private bool validarCampos()
+        private bool ValidarCampos()
         {
-            UsuarioRepository usuarioRepository = new UsuarioRepository();
+            var usuarioRepository = new UsuarioRepository();
 
 
-            if (String.IsNullOrEmpty(txNome.Text))
+            if (string.IsNullOrEmpty(txNome.Text))
             {
                 MessageBox.Show("Informe o nome", "Validação falhou", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             
-            if (!String.IsNullOrEmpty(txEmail.Text))
+            if (!string.IsNullOrEmpty(txEmail.Text))
             {
                 if(!Regex.IsMatch(txEmail.Text, "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"))
                 {
@@ -92,33 +91,39 @@ namespace Fortech_TP3A1
                 return false;
             }
 
-            if (rdPessoaFisica.Checked && !String.IsNullOrEmpty(txCpf.Text) && !Regex.IsMatch(txCpf.Text, "^\\d{3}.\\d{3}.\\d{3}-\\d{2}$")) { 
+            if (rdPessoaFisica.Checked && !string.IsNullOrEmpty(txCpf.Text) && !Regex.IsMatch(txCpf.Text, "^\\d{3}.\\d{3}.\\d{3}-\\d{2}$")) { 
                 MessageBox.Show("Informe um CPF válido", "Validação falhou", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            else
+            
+            if (usuarioRepository.ExistePeloEmail(txEmail.Text))
             {
-                if (usuarioRepository.existePeloCpf(txCpf.Text))
-                {
-                    MessageBox.Show("Já existe um usuário cadastrado com o CPF informado", "Validação falhou", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txCpf.Text = "";
-                }
+                MessageBox.Show("Já existe um usuário cadastrado com o Email informado", "Validação falhou", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txEmail.Text = "";
+                return false;
             }
 
-            if (rdPessoaJuridica.Checked && !String.IsNullOrEmpty(txCnpj.Text) && !Regex.IsMatch(txCpf.Text, "^(?!(\\d)\\1\\.\\1{3}\\.\\1{3}\\/\\1{4}\\\\-\\1{2}$)\\d{2}\\.\\d{3}\\.\\d{3}\\/\\d{4}\\\\-\\d{2}$\r\n"))
+            if (usuarioRepository.ExistePeloCpf(txCpf.Text))
+            {
+                MessageBox.Show("Já existe um usuário cadastrado com o CPF informado", "Validação falhou", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txCpf.Text = "";
+                return false;
+            }
+
+            if (rdPessoaJuridica.Checked && !string.IsNullOrEmpty(txCnpj.Text) && !Regex.IsMatch(txCpf.Text, "^(?!(\\d)\\1\\.\\1{3}\\.\\1{3}\\/\\1{4}\\\\-\\1{2}$)\\d{2}\\.\\d{3}\\.\\d{3}\\/\\d{4}\\\\-\\d{2}$\r\n"))
             {
                
                 MessageBox.Show("Informe um CNPJ válido", "Validação falhou", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            if (String.IsNullOrEmpty(txSenha.Text))
+            if (string.IsNullOrEmpty(txSenha.Text))
             {
                 MessageBox.Show("Informe uma senha", "Validação falhou", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            if (String.IsNullOrEmpty(txConfirmarSenha.Text))
+            if (string.IsNullOrEmpty(txConfirmarSenha.Text))
             {
                 MessageBox.Show("Confirme a senha", "Validação falhou", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -175,6 +180,20 @@ namespace Fortech_TP3A1
         private void txCnpj_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btAvancar_Click(object sender, EventArgs e)
+        {
+            var enderecoForm = new EnderecoForm();
+            enderecoForm.Show();
+            Close();
+        }
+
+        private void btVoltar_Click(object sender, EventArgs e)
+        {
+            var acessoForm = new AcessoForm();
+            acessoForm.Show();
+            Close();
         }
     }
 }

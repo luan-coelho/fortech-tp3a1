@@ -1,4 +1,4 @@
-﻿namespace Fortech_TP3A1
+﻿namespace Fortech_TP3A1.Forms
 {
     partial class AcessoForm
     {

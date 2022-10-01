@@ -1,21 +1,31 @@
-﻿using Fortech_TP3A1.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using Fortech_TP3A1.Model;
 
 namespace Fortech_TP3A1.Repository
 {
-    public class UsuarioRepository : Repository<Usuario>
+    public class UsuarioRepository : IRepository<Usuario>
     {
-        private FortechContext db = new FortechContext();
+        private readonly FortechContext _db = new FortechContext();
 
-        public bool existePeloCpf(string cpf)
+        public Usuario Autenticado(string email, string senha)
         {
-            List<Usuario> pesquisa = db.usuario.Where(x => x.cpf == cpf).ToList();
-            return pesquisa.Count() > 0;
+            var usuario = _db.usuario.Where(x => x.email == email && x.senha == senha).ToList();
+            return usuario.Count > 0 ? usuario[0] : null;
         }
 
+        public bool ExistePeloCpf(string cpf)
+        {
+            var pesquisa = _db.usuario.Where(x => x.cpf == cpf).ToList();
+            return pesquisa.Any();
+        }
+        
+        public bool ExistePeloEmail(string email)
+        {
+            var pesquisa = _db.usuario.Where(x => x.email == email).ToList();
+            return pesquisa.Any();
+        }
+        
         public List<Usuario> BuscarTodos()
         {
             return null;
@@ -23,16 +33,8 @@ namespace Fortech_TP3A1.Repository
 
         public void Salvar(Usuario usuario)
         {
-            try
-            {
-                db.usuario.Add(usuario);
-                db.SaveChanges();
-            }
-            catch (System.Exception)
-            {
-
-                throw;
-            }
+            _db.usuario.Add(usuario);
+            _db.SaveChanges();
         }
     }
 }

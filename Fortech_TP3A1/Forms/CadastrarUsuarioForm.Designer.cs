@@ -1,4 +1,4 @@
-﻿namespace Fortech_TP3A1
+﻿namespace Fortech_TP3A1.Forms
 {
     partial class CadastrarForm
     {
@@ -47,16 +47,18 @@
             this.dtpNascimento = new System.Windows.Forms.DateTimePicker();
             this.lbNascimento = new System.Windows.Forms.Label();
             this.txCpf = new System.Windows.Forms.MaskedTextBox();
+            this.btAvancar = new System.Windows.Forms.Button();
+            this.btVoltar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txNome
             // 
-            this.txNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txNome.Location = new System.Drawing.Point(18, 109);
             this.txNome.MaxLength = 255;
             this.txNome.Multiline = true;
             this.txNome.Name = "txNome";
-            this.txNome.Size = new System.Drawing.Size(187, 32);
+            this.txNome.Size = new System.Drawing.Size(207, 32);
             this.txNome.TabIndex = 1;
             // 
             // lbNome
@@ -74,7 +76,7 @@
             // 
             this.lbCpf.AutoSize = true;
             this.lbCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCpf.Location = new System.Drawing.Point(420, 82);
+            this.lbCpf.Location = new System.Drawing.Point(439, 82);
             this.lbCpf.Name = "lbCpf";
             this.lbCpf.Size = new System.Drawing.Size(57, 24);
             this.lbCpf.TabIndex = 5;
@@ -83,19 +85,19 @@
             // 
             // txEmail
             // 
-            this.txEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txEmail.Location = new System.Drawing.Point(221, 109);
+            this.txEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txEmail.Location = new System.Drawing.Point(231, 109);
             this.txEmail.MaxLength = 255;
             this.txEmail.Multiline = true;
             this.txEmail.Name = "txEmail";
-            this.txEmail.Size = new System.Drawing.Size(187, 32);
+            this.txEmail.Size = new System.Drawing.Size(207, 32);
             this.txEmail.TabIndex = 2;
             // 
             // lbEmail
             // 
             this.lbEmail.AutoSize = true;
             this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEmail.Location = new System.Drawing.Point(217, 82);
+            this.lbEmail.Location = new System.Drawing.Point(227, 82);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(67, 24);
             this.lbEmail.TabIndex = 9;
@@ -105,7 +107,7 @@
             // txRg
             // 
             this.txRg.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txRg.Location = new System.Drawing.Point(578, 110);
+            this.txRg.Location = new System.Drawing.Point(586, 109);
             this.txRg.MaxLength = 9;
             this.txRg.Multiline = true;
             this.txRg.Name = "txRg";
@@ -116,7 +118,7 @@
             // 
             this.lbRg.AutoSize = true;
             this.lbRg.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbRg.Location = new System.Drawing.Point(574, 83);
+            this.lbRg.Location = new System.Drawing.Point(584, 82);
             this.lbRg.Name = "lbRg";
             this.lbRg.Size = new System.Drawing.Size(47, 24);
             this.lbRg.TabIndex = 7;
@@ -125,8 +127,8 @@
             // 
             // txConfirmarSenha
             // 
-            this.txConfirmarSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txConfirmarSenha.Location = new System.Drawing.Point(221, 184);
+            this.txConfirmarSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txConfirmarSenha.Location = new System.Drawing.Point(231, 184);
             this.txConfirmarSenha.MaxLength = 100;
             this.txConfirmarSenha.Multiline = true;
             this.txConfirmarSenha.Name = "txConfirmarSenha";
@@ -138,7 +140,7 @@
             // 
             this.lbConfirmarSenha.AutoSize = true;
             this.lbConfirmarSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbConfirmarSenha.Location = new System.Drawing.Point(217, 157);
+            this.lbConfirmarSenha.Location = new System.Drawing.Point(227, 157);
             this.lbConfirmarSenha.Name = "lbConfirmarSenha";
             this.lbConfirmarSenha.Size = new System.Drawing.Size(161, 24);
             this.lbConfirmarSenha.TabIndex = 13;
@@ -147,7 +149,7 @@
             // 
             // txSenha
             // 
-            this.txSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txSenha.Location = new System.Drawing.Point(21, 184);
             this.txSenha.MaxLength = 100;
             this.txSenha.Multiline = true;
@@ -170,7 +172,7 @@
             // btCadastrar
             // 
             this.btCadastrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btCadastrar.Location = new System.Drawing.Point(543, 244);
+            this.btCadastrar.Location = new System.Drawing.Point(391, 232);
             this.btCadastrar.Name = "btCadastrar";
             this.btCadastrar.Size = new System.Drawing.Size(153, 36);
             this.btCadastrar.TabIndex = 8;
@@ -181,7 +183,7 @@
             // txCnpj
             // 
             this.txCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txCnpj.Location = new System.Drawing.Point(424, 109);
+            this.txCnpj.Location = new System.Drawing.Point(444, 109);
             this.txCnpj.Multiline = true;
             this.txCnpj.Name = "txCnpj";
             this.txCnpj.Size = new System.Drawing.Size(187, 32);
@@ -192,7 +194,7 @@
             // 
             this.lbCnpj.AutoSize = true;
             this.lbCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCnpj.Location = new System.Drawing.Point(420, 83);
+            this.lbCnpj.Location = new System.Drawing.Point(439, 82);
             this.lbCnpj.Name = "lbCnpj";
             this.lbCnpj.Size = new System.Drawing.Size(68, 24);
             this.lbCnpj.TabIndex = 18;
@@ -249,18 +251,42 @@
             // txCpf
             // 
             this.txCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txCpf.Location = new System.Drawing.Point(424, 110);
-            this.txCpf.Mask = "000.000.000-00";
+            this.txCpf.Location = new System.Drawing.Point(444, 112);
+            this.txCpf.Mask = "999,999,999,99";
             this.txCpf.Name = "txCpf";
             this.txCpf.Size = new System.Drawing.Size(136, 29);
             this.txCpf.TabIndex = 3;
-            this.txCpf.ValidatingType = typeof(int);
+            // 
+            // btAvancar
+            // 
+            this.btAvancar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAvancar.Location = new System.Drawing.Point(558, 232);
+            this.btAvancar.Name = "btAvancar";
+            this.btAvancar.Size = new System.Drawing.Size(153, 36);
+            this.btAvancar.TabIndex = 24;
+            this.btAvancar.Text = "Avançar";
+            this.btAvancar.UseVisualStyleBackColor = true;
+            this.btAvancar.Click += new System.EventHandler(this.btAvancar_Click);
+            // 
+            // btVoltar
+            // 
+            this.btVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btVoltar.Location = new System.Drawing.Point(18, 232);
+            this.btVoltar.Name = "btVoltar";
+            this.btVoltar.Size = new System.Drawing.Size(153, 36);
+            this.btVoltar.TabIndex = 26;
+            this.btVoltar.Text = "Voltar";
+            this.btVoltar.UseVisualStyleBackColor = true;
+            this.btVoltar.Click += new System.EventHandler(this.btVoltar_Click);
             // 
             // CadastrarForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(713, 291);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(723, 280);
+            this.Controls.Add(this.btVoltar);
+            this.Controls.Add(this.btAvancar);
             this.Controls.Add(this.txCpf);
             this.Controls.Add(this.lbNascimento);
             this.Controls.Add(this.dtpNascimento);
@@ -280,13 +306,16 @@
             this.Controls.Add(this.lbCpf);
             this.Controls.Add(this.txNome);
             this.Controls.Add(this.lbNome);
+            this.Location = new System.Drawing.Point(15, 15);
             this.Name = "CadastrarForm";
-            this.Text = "Cadastrar";
             this.Load += new System.EventHandler(this.CadastrarForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
+        private System.Windows.Forms.Button btVoltar;
+
+        private System.Windows.Forms.Button btAvancar;
 
         #endregion
 
