@@ -19,8 +19,20 @@ namespace Fortech_TP3A1
         private void btLogin_Click(object sender, EventArgs e)
         {
             Hide();
-            var acessoForm = new UsuarioForm();
+            var acessoForm = new AcessoForm();
             acessoForm.Show();
+        }
+
+        private void btCadastrar_Click(object sender, EventArgs e)
+        {
+            Hide();
+            var cadastroInfoUsuario = new CadastroInfoUsuario(null, null, null);
+            cadastroInfoUsuario.Show();
+        }
+
+        private void btSair_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

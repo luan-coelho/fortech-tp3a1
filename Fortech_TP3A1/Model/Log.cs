@@ -5,8 +5,7 @@ namespace Fortech_TP3A1.Model
 {
     public class Log
     {
-        [Key]
-        public int id { get; set; }
+        [Key] public int id { get; set; }
 
         public DateTime dataHora { get; set; }
 

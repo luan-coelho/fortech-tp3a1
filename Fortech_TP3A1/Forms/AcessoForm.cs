@@ -19,24 +19,27 @@ namespace Fortech_TP3A1.Forms
             var senha = txSenha.Text;
 
             var usuario = usuarioRepository.Autenticado(email, senha);
-            if(usuario == null)
+            if (usuario == null)
             {
-                MessageBox.Show("Login ou senha inválidos", "Ácesso negado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Login ou senha inválidos", "Ácesso negado", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
             else
             {
-                MessageBox.Show(usuario.nome + " seja bem-vindo!", "Logado com sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(usuario.nome + " seja bem-vindo!", "Logado com sucesso", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 ContextoGlobal.usuarioLogado = usuario;
                 if (usuario.admin)
-                {
-                    var homeForm = new HomeForm();
-                    homeForm.Show();
-                }
-                else
                 {
                     var usuarioForm = new UsuarioForm();
                     usuarioForm.Show();
                 }
+                else
+                {
+                    var homeForm = new HomeForm();
+                    homeForm.Show();
+                }
+
                 Hide();
             }
         }

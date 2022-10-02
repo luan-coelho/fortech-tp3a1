@@ -35,7 +35,7 @@ namespace Fortech_TP3A1.Forms
             this.lbGerencia = new System.Windows.Forms.Label();
             this.toolStripDropDown1 = new System.Windows.Forms.ToolStripDropDown();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btAvancar = new System.Windows.Forms.Button();
+            this.btSalvar = new System.Windows.Forms.Button();
             this.btCancelar = new System.Windows.Forms.Button();
             this.txCpf = new System.Windows.Forms.MaskedTextBox();
             this.lbNascimento = new System.Windows.Forms.Label();
@@ -77,7 +77,6 @@ namespace Fortech_TP3A1.Forms
             this.lbGerencia.Name = "lbGerencia";
             this.lbGerencia.Size = new System.Drawing.Size(247, 29);
             this.lbGerencia.TabIndex = 0;
-            this.lbGerencia.Text = "Cadastrar/Editar Usuário";
             // 
             // toolStripDropDown1
             // 
@@ -88,7 +87,7 @@ namespace Fortech_TP3A1.Forms
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.btAvancar);
+            this.panel2.Controls.Add(this.btSalvar);
             this.panel2.Controls.Add(this.btCancelar);
             this.panel2.Controls.Add(this.txCpf);
             this.panel2.Controls.Add(this.lbNascimento);
@@ -114,20 +113,20 @@ namespace Fortech_TP3A1.Forms
             this.panel2.Size = new System.Drawing.Size(761, 279);
             this.panel2.TabIndex = 45;
             // 
-            // btAvancar
+            // btSalvar
             // 
-            this.btAvancar.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btAvancar.FlatAppearance.BorderSize = 0;
-            this.btAvancar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAvancar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAvancar.ForeColor = System.Drawing.Color.White;
-            this.btAvancar.Location = new System.Drawing.Point(648, 234);
-            this.btAvancar.Name = "btAvancar";
-            this.btAvancar.Size = new System.Drawing.Size(76, 33);
-            this.btAvancar.TabIndex = 63;
-            this.btAvancar.Text = "Avançar";
-            this.btAvancar.UseVisualStyleBackColor = false;
-            this.btAvancar.Click += new System.EventHandler(this.btAvancar_Click);
+            this.btSalvar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btSalvar.FlatAppearance.BorderSize = 0;
+            this.btSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSalvar.ForeColor = System.Drawing.Color.White;
+            this.btSalvar.Location = new System.Drawing.Point(648, 234);
+            this.btSalvar.Name = "btSalvar";
+            this.btSalvar.Size = new System.Drawing.Size(76, 33);
+            this.btSalvar.TabIndex = 63;
+            this.btSalvar.Text = "Salvar";
+            this.btSalvar.UseVisualStyleBackColor = false;
+            this.btSalvar.Click += new System.EventHandler(this.btAvancar_Click);
             // 
             // btCancelar
             // 
@@ -160,9 +159,8 @@ namespace Fortech_TP3A1.Forms
             this.lbNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNascimento.Location = new System.Drawing.Point(419, 151);
             this.lbNascimento.Name = "lbNascimento";
-            this.lbNascimento.Size = new System.Drawing.Size(162, 24);
+            this.lbNascimento.Size = new System.Drawing.Size(0, 24);
             this.lbNascimento.TabIndex = 61;
-            this.lbNascimento.Text = "Data Nascimento: ";
             // 
             // dtpNascimento
             // 
@@ -217,9 +215,8 @@ namespace Fortech_TP3A1.Forms
             this.lbCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCnpj.Location = new System.Drawing.Point(459, 76);
             this.lbCnpj.Name = "lbCnpj";
-            this.lbCnpj.Size = new System.Drawing.Size(68, 24);
+            this.lbCnpj.Size = new System.Drawing.Size(0, 24);
             this.lbCnpj.TabIndex = 58;
-            this.lbCnpj.Text = "CNPJ: ";
             // 
             // txConfirmarSenha
             // 
@@ -239,9 +236,8 @@ namespace Fortech_TP3A1.Forms
             this.lbConfirmarSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbConfirmarSenha.Location = new System.Drawing.Point(226, 151);
             this.lbConfirmarSenha.Name = "lbConfirmarSenha";
-            this.lbConfirmarSenha.Size = new System.Drawing.Size(161, 24);
+            this.lbConfirmarSenha.Size = new System.Drawing.Size(0, 24);
             this.lbConfirmarSenha.TabIndex = 57;
-            this.lbConfirmarSenha.Text = "Confirmar Senha: ";
             // 
             // txSenha
             // 
@@ -261,9 +257,8 @@ namespace Fortech_TP3A1.Forms
             this.lbSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSenha.Location = new System.Drawing.Point(34, 151);
             this.lbSenha.Name = "lbSenha";
-            this.lbSenha.Size = new System.Drawing.Size(75, 24);
+            this.lbSenha.Size = new System.Drawing.Size(0, 24);
             this.lbSenha.TabIndex = 56;
-            this.lbSenha.Text = "Senha: ";
             // 
             // txEmail
             // 
@@ -282,9 +277,8 @@ namespace Fortech_TP3A1.Forms
             this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbEmail.Location = new System.Drawing.Point(247, 76);
             this.lbEmail.Name = "lbEmail";
-            this.lbEmail.Size = new System.Drawing.Size(67, 24);
+            this.lbEmail.Size = new System.Drawing.Size(0, 24);
             this.lbEmail.TabIndex = 55;
-            this.lbEmail.Text = "Email: ";
             // 
             // txRg
             // 
@@ -303,9 +297,8 @@ namespace Fortech_TP3A1.Forms
             this.lbRg.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbRg.Location = new System.Drawing.Point(604, 76);
             this.lbRg.Name = "lbRg";
-            this.lbRg.Size = new System.Drawing.Size(47, 24);
+            this.lbRg.Size = new System.Drawing.Size(0, 24);
             this.lbRg.TabIndex = 53;
-            this.lbRg.Text = "RG: ";
             // 
             // lbCpf
             // 
@@ -313,9 +306,8 @@ namespace Fortech_TP3A1.Forms
             this.lbCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCpf.Location = new System.Drawing.Point(459, 76);
             this.lbCpf.Name = "lbCpf";
-            this.lbCpf.Size = new System.Drawing.Size(57, 24);
+            this.lbCpf.Size = new System.Drawing.Size(0, 24);
             this.lbCpf.TabIndex = 51;
-            this.lbCpf.Text = "CPF: ";
             // 
             // txNome
             // 
@@ -334,26 +326,26 @@ namespace Fortech_TP3A1.Forms
             this.lbNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNome.Location = new System.Drawing.Point(37, 76);
             this.lbNome.Name = "lbNome";
-            this.lbNome.Size = new System.Drawing.Size(72, 24);
+            this.lbNome.Size = new System.Drawing.Size(0, 24);
             this.lbNome.TabIndex = 47;
-            this.lbNome.Text = "Nome: ";
             // 
             // UsuarioInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(761, 371);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Location = new System.Drawing.Point(15, 15);
             this.Name = "UsuarioInfoForm";
-            this.Text = "Usuário";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.Button btAvancar;
+        private System.Windows.Forms.Button btSalvar;
         private System.Windows.Forms.Button btCancelar;
         private System.Windows.Forms.MaskedTextBox txCpf;
         private System.Windows.Forms.Label lbNascimento;

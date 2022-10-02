@@ -184,9 +184,9 @@ namespace Fortech_TP3A1.Forms
 
         private void btAvancar_Click(object sender, EventArgs e)
         {
-            var enderecoForm = new EnderecoForm();
-            enderecoForm.Show();
-            Close();
+            // var enderecoForm = new EnderecoForm();
+            // enderecoForm.Show();
+            // Close();
         }
 
         private void btVoltar_Click(object sender, EventArgs e)

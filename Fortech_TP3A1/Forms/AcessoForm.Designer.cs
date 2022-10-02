@@ -122,13 +122,14 @@
             this.Controls.Add(this.txEmail);
             this.Controls.Add(this.lbSenha);
             this.Controls.Add(this.lbEmail);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AcessoForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Acesso";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AcessoForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

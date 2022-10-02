@@ -63,5 +63,10 @@ namespace Fortech_TP3A1.Forms
             var form = new UsuarioInfoForm(null);
             form.ShowDialog();
         }
+
+        private void btAtualizar_Click(object sender, EventArgs e)
+        {
+            dtgUsuario.DataSource = _repository.BuscarTodos();
+        }
     }
 }

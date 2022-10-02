@@ -8,7 +8,7 @@ namespace Fortech_TP3A1.Repository
     public class LogRepository
     {
         private readonly FortechContext _dbContext = new FortechContext();
-        
+
         public List<Log> BuscarTodos()
         {
             return _dbContext.log.Select(x => x).ToList();
