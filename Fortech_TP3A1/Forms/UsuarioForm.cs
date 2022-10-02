@@ -27,7 +27,7 @@ namespace Fortech_TP3A1.Forms
             if (e.ColumnIndex == 0)
             {
                 var idUsuario = (int)dtgUsuario.Rows[e.RowIndex].Cells[1].Value;
-                var form = new UsuarioInfoForm(_repository.BuscarPeloId(idUsuario));
+                var form = new CadastroInfoUsuario(_repository.BuscarPeloId(idUsuario));
                 form.ShowDialog();
             }
 

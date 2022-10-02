@@ -9,6 +9,7 @@ namespace Fortech_TP3A1.Forms
 {
     public partial class CadastroInfoUsuario : Form
     {
+        private Usuario _usuario;
         private Endereco _endereco;
         private readonly CredenciaisLogin _credenciaisLogin;
 
@@ -18,6 +19,26 @@ namespace Fortech_TP3A1.Forms
 
             _endereco = endereco;
             _credenciaisLogin = credenciaisLogin;
+
+            if (rdPf.Checked)
+            {
+                OcultarCamposPessoaJuridica();
+            }
+            else
+            {
+                OcultarCamposPessoaFisica();
+            }
+
+            if (usuario != null)
+            {
+                PreencherInputs(usuario);
+            }
+        }
+
+        public CadastroInfoUsuario(Usuario usuario)
+        {
+            InitializeComponent();
+            _usuario = usuario;
 
             if (rdPf.Checked)
             {
@@ -88,7 +109,8 @@ namespace Fortech_TP3A1.Forms
         private void btAvancar_Click(object sender, EventArgs e)
         {
             if (!ValidarCampos()) return;
-            var enderecoForm = new EnderecoForm(MontarObjetoUsuario(), _endereco, _credenciaisLogin);
+            var enderecoForm =
+                new EnderecoForm(MontarObjetoUsuario(), _endereco, _credenciaisLogin);
             enderecoForm.Show();
             Close();
         }
@@ -124,12 +146,23 @@ namespace Fortech_TP3A1.Forms
                 return false;
             }
 
-            if (usuarioRepository.ExistePeloCpf(txCpf.Text))
+            if (_usuario != null)
             {
-                MessageBox.Show("Já existe um usuário cadastrado com o CPF informado", "Validação falhou",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txCpf.Text = "";
-                return false;
+                var usuarioBanco = usuarioRepository.BuscarPeloId(_usuario.Id);
+                if (usuarioBanco != null)
+                {
+                    if (!usuarioBanco.cpf.Equals(txCpf.Text))
+                    {
+                        if (VerificarSeExisteCpfCadastrado(usuarioRepository) == false)
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (!VerificarSeExisteCpfCadastrado(usuarioRepository)) return false;
             }
 
             if (rdPessoaJuridica.Checked && !string.IsNullOrEmpty(txCnpj.Text) && !Regex.IsMatch(txCpf.Text,
@@ -137,6 +170,19 @@ namespace Fortech_TP3A1.Forms
             {
                 MessageBox.Show("Informe um CNPJ válido", "Validação falhou", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool VerificarSeExisteCpfCadastrado(UsuarioRepository usuarioRepository)
+        {
+            if (usuarioRepository.ExistePeloCpf(txCpf.Text))
+            {
+                MessageBox.Show("Já existe um usuário cadastrado com o CPF informado", "Validação falhou",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txCpf.Text = "";
                 return false;
             }
 

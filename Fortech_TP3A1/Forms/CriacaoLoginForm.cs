@@ -111,13 +111,23 @@ namespace Fortech_TP3A1.Forms
                 return false;
             }
 
-
-            if (usuarioRepository.ExistePeloEmail(txEmail.Text))
+            if (_usuario != null)
             {
-                MessageBox.Show("Já existe um usuário cadastrado com o Email informado", "Validação falhou",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txEmail.Text = "";
-                return false;
+                var usuarioBanco = usuarioRepository.BuscarPeloId(_usuario.Id);
+                if (usuarioBanco != null)
+                {
+                    if (!usuarioBanco.email.Equals(txEmail.Text))
+                    {
+                        if (VerificarSeExisteEmailCadastrado(usuarioRepository) == false)
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (!VerificarSeExisteEmailCadastrado(usuarioRepository)) return false;
             }
 
             if (string.IsNullOrEmpty(txSenha.Text))
@@ -135,6 +145,19 @@ namespace Fortech_TP3A1.Forms
             if (!txSenha.Text.Equals(txConfirmarSenha.Text))
             {
                 MessageBox.Show("As senhas não batem", "Validação falhou", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool VerificarSeExisteEmailCadastrado(UsuarioRepository usuarioRepository)
+        {
+            if (usuarioRepository.ExistePeloEmail(txEmail.Text))
+            {
+                MessageBox.Show("Já existe um usuário cadastrado com o Email informado", "Validação falhou",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txEmail.Text = "";
                 return false;
             }
 
