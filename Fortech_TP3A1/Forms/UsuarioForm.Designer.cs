@@ -43,7 +43,7 @@ namespace Fortech_TP3A1.Forms
             this.clmDataNascimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmAdmin = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.clmEditar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btNovo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbGerencia = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgUsuario)).BeginInit();
@@ -152,20 +152,20 @@ namespace Fortech_TP3A1.Forms
             this.clmEditar.Text = "Editar";
             this.clmEditar.UseColumnTextForButtonValue = true;
             // 
-            // button1
+            // btNovo
             // 
-            this.button1.BackColor = System.Drawing.Color.Green;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(12, 76);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(76, 33);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Novo";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btNovo.BackColor = System.Drawing.Color.Green;
+            this.btNovo.FlatAppearance.BorderSize = 0;
+            this.btNovo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btNovo.ForeColor = System.Drawing.Color.White;
+            this.btNovo.Location = new System.Drawing.Point(12, 76);
+            this.btNovo.Name = "btNovo";
+            this.btNovo.Size = new System.Drawing.Size(76, 33);
+            this.btNovo.TabIndex = 1;
+            this.btNovo.Text = "Novo";
+            this.btNovo.UseVisualStyleBackColor = false;
+            this.btNovo.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel1
             // 
@@ -193,7 +193,7 @@ namespace Fortech_TP3A1.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(668, 396);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btNovo);
             this.Controls.Add(this.dtgUsuario);
             this.Name = "UsuarioForm";
             this.Text = "Usuários";
@@ -212,7 +212,7 @@ namespace Fortech_TP3A1.Forms
 
         private System.Windows.Forms.Panel panel1;
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btNovo;
 
         private System.Windows.Forms.DataGridViewCheckBoxColumn clmDesabilitar;
 

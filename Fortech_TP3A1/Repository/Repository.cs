@@ -2,9 +2,12 @@
 
 namespace Fortech_TP3A1.Repository
 {
-    public interface IRepository <T>
+    public abstract class Repository<T>
     {
-        List <T> BuscarTodos();
-        void Salvar(T objeto);
+        protected FortechContext DbContext = new FortechContext();
+
+        public abstract List<T> BuscarTodos();
+
+        public abstract void Salvar(T objeto);
     }
 }

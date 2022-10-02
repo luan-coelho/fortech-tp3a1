@@ -1,46 +1,54 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using Fortech_TP3A1.Model;
 
 namespace Fortech_TP3A1.Repository
 {
-    public class UsuarioRepository : IRepository<Usuario>
+    public class UsuarioRepository : Repository<Usuario>
     {
-        private readonly FortechContext _db = new FortechContext();
-
         public Usuario BuscarPeloId(int id)
         {
-            var pesquisa = _db.usuario.Where(x => x.Id == id).ToList();
-            return pesquisa[0];
+            return DbContext.usuario.First(x => x.Id == id);
         }
 
         public Usuario Autenticado(string email, string senha)
         {
-            var usuario = _db.usuario.Where(x => x.email == email && x.senha == senha).ToList();
-            return usuario.Count > 0 ? usuario[0] : null;
+            return DbContext.usuario.First(x => x.email == email && x.senha == senha);
         }
 
         public bool ExistePeloCpf(string cpf)
         {
-            var pesquisa = _db.usuario.Where(x => x.cpf == cpf).ToList();
+            var pesquisa = DbContext.usuario.Where(x => x.cpf == cpf).ToList();
             return pesquisa.Any();
         }
 
         public bool ExistePeloEmail(string email)
         {
-            var pesquisa = _db.usuario.Where(x => x.email == email).ToList();
+            var pesquisa = DbContext.usuario.Where(x => x.email == email).ToList();
             return pesquisa.Any();
         }
 
-        public List<Usuario> BuscarTodos()
+        public override List<Usuario> BuscarTodos()
         {
-            return _db.usuario.Select(x => x).ToList();
+            return DbContext.usuario.Select(x => x).ToList();
         }
 
-        public void Salvar(Usuario usuario)
+        public override void Salvar(Usuario usuario)
         {
-            _db.usuario.Add(usuario);
-            _db.SaveChanges();
+            DbContext.usuario.Add(usuario);
+            DbContext.SaveChanges();
+        }
+
+        public void AlterarAtividade(int id)
+        {
+            var usuario = DbContext.usuario.First(x => x.Id == id);
+            DbContext.Entry(usuario).State = EntityState.Modified;
+
+            if (usuario == null) return;
+            usuario.ativo = !usuario.ativo;
+
+            DbContext.SaveChanges();
         }
     }
 }

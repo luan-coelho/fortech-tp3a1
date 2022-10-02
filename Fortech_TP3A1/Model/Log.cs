@@ -13,5 +13,12 @@ namespace Fortech_TP3A1.Model
         public string descricao { get; set; }
 
         public int idUsuario { get; set; }
+
+        public Log(DateTime dataHora, string descricao, int idUsuario)
+        {
+            this.dataHora = dataHora;
+            this.descricao = descricao;
+            this.idUsuario = idUsuario;
+        }
     }
 }
