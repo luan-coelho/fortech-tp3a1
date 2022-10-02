@@ -8,6 +8,12 @@ namespace Fortech_TP3A1.Repository
     {
         private readonly FortechContext _db = new FortechContext();
 
+        public Usuario BuscarPeloId(int id)
+        {
+            var pesquisa = _db.usuario.Where(x => x.Id == id).ToList();
+            return pesquisa[0];
+        }
+
         public Usuario Autenticado(string email, string senha)
         {
             var usuario = _db.usuario.Where(x => x.email == email && x.senha == senha).ToList();
@@ -19,16 +25,16 @@ namespace Fortech_TP3A1.Repository
             var pesquisa = _db.usuario.Where(x => x.cpf == cpf).ToList();
             return pesquisa.Any();
         }
-        
+
         public bool ExistePeloEmail(string email)
         {
             var pesquisa = _db.usuario.Where(x => x.email == email).ToList();
             return pesquisa.Any();
         }
-        
+
         public List<Usuario> BuscarTodos()
         {
-            return null;
+            return _db.usuario.Select(x => x).ToList();
         }
 
         public void Salvar(Usuario usuario)

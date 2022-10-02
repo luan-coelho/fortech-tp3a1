@@ -252,7 +252,7 @@
             // 
             this.txCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txCpf.Location = new System.Drawing.Point(444, 112);
-            this.txCpf.Mask = "999,999,999,99";
+            this.txCpf.Mask = "999,999,999-99";
             this.txCpf.Name = "txCpf";
             this.txCpf.Size = new System.Drawing.Size(136, 29);
             this.txCpf.TabIndex = 3;

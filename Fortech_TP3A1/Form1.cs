@@ -18,8 +18,8 @@ namespace Fortech_TP3A1
 
         private void btLogin_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            AcessoForm acessoForm = new AcessoForm();
+            Hide();
+            var acessoForm = new UsuarioForm();
             acessoForm.Show();
         }
     }

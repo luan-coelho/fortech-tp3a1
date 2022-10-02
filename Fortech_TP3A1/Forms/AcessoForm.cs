@@ -27,8 +27,16 @@ namespace Fortech_TP3A1.Forms
             {
                 MessageBox.Show(usuario.nome + " seja bem-vindo!", "Logado com sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ContextoGlobal.usuarioLogado = usuario;
-                var homeForm = new HomeForm();
-                homeForm.Show();
+                if (usuario.admin)
+                {
+                    var homeForm = new HomeForm();
+                    homeForm.Show();
+                }
+                else
+                {
+                    var usuarioForm = new UsuarioForm();
+                    usuarioForm.Show();
+                }
                 Hide();
             }
         }

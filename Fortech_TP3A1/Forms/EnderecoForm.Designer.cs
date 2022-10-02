@@ -37,7 +37,7 @@ namespace Fortech_TP3A1.Forms
             // btVoltar
             // 
             this.btVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btVoltar.Location = new System.Drawing.Point(29, 284);
+            this.btVoltar.Location = new System.Drawing.Point(27, 312);
             this.btVoltar.Name = "btVoltar";
             this.btVoltar.Size = new System.Drawing.Size(153, 36);
             this.btVoltar.TabIndex = 25;
@@ -52,7 +52,7 @@ namespace Fortech_TP3A1.Forms
             this.ClientSize = new System.Drawing.Size(480, 360);
             this.Controls.Add(this.btVoltar);
             this.Name = "EnderecoForm";
-            this.Text = "EnderecoForm";
+            this.Text = "Endereço";
             this.ResumeLayout(false);
         }
 

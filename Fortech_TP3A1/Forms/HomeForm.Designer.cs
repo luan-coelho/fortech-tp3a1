@@ -50,7 +50,6 @@
             this.Name = "HomeForm";
             this.Text = "HomeForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HomeForm_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HomeForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
         }
