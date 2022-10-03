@@ -32,6 +32,8 @@ namespace Fortech_TP3A1.Forms
                 if (usuario.admin)
                 {
                     var usuarioForm = new UsuarioForm();
+                    txEmail.Text = "";
+                    txSenha.Text = "";
                     usuarioForm.Show();
                 }
                 else
@@ -39,7 +41,6 @@ namespace Fortech_TP3A1.Forms
                     var homeForm = new HomeForm();
                     homeForm.Show();
                 }
-
                 Hide();
             }
         }

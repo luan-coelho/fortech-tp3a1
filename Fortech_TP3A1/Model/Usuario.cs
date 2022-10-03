@@ -46,7 +46,7 @@ namespace Fortech_TP3A1.Model
 
         public DateTime dataNascimento { get; set; }
 
-        public List<Endereco> enderecos { get; set; }
+        public ICollection<Endereco> enderecos { get; set; }
 
         public List<SolicitacaoServico>  solicitacoes { get; set; }
 

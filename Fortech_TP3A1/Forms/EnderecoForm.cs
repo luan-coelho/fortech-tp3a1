@@ -24,6 +24,11 @@ namespace Fortech_TP3A1.Forms
             {
                 PreencherInputs();
             }
+
+            if (usuario.enderecos != null)
+            {
+                dtgEndereco.DataSource = usuario.enderecos;
+            }
         }
 
         public void PreencherInputs()
@@ -75,7 +80,15 @@ namespace Fortech_TP3A1.Forms
         private void btCancelar_Click(object sender, EventArgs e)
         {
             Close();
-            Application.OpenForms["Form1"]?.Show();
+            if (ContextoGlobal.usuarioLogado.admin)
+            {
+                var formUsuario = new UsuarioForm();
+                formUsuario.Show();
+            }
+            else
+            {
+                Application.OpenForms["Form1"]?.Show();
+            }
         }
 
         private void btPesquisar_Click(object sender, EventArgs e)

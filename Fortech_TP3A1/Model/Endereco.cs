@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Fortech_TP3A1.Model
 {
     public class Endereco
     {
         [Key]
-        public int Id { get; set; }
+        public int id { get; set; }
         
         public string cep { get; set; }
 

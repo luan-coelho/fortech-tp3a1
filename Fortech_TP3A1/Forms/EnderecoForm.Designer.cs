@@ -51,7 +51,9 @@ namespace Fortech_TP3A1.Forms
             this.btAvancar = new System.Windows.Forms.Button();
             this.btCancelar = new System.Windows.Forms.Button();
             this.btPesquisar = new System.Windows.Forms.Button();
+            this.dtgEndereco = new System.Windows.Forms.DataGridView();
             this.panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgEndereco)).BeginInit();
             this.SuspendLayout();
             // 
             // btVoltar
@@ -149,7 +151,7 @@ namespace Fortech_TP3A1.Forms
             this.panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel.Location = new System.Drawing.Point(0, 0);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(446, 75);
+            this.panel.Size = new System.Drawing.Size(809, 75);
             this.panel.TabIndex = 71;
             // 
             // lbGerencia
@@ -280,11 +282,21 @@ namespace Fortech_TP3A1.Forms
             this.btPesquisar.UseVisualStyleBackColor = false;
             this.btPesquisar.Click += new System.EventHandler(this.btPesquisar_Click);
             // 
+            // dtgEndereco
+            // 
+            this.dtgEndereco.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgEndereco.Location = new System.Drawing.Point(426, 146);
+            this.dtgEndereco.MultiSelect = false;
+            this.dtgEndereco.Name = "dtgEndereco";
+            this.dtgEndereco.Size = new System.Drawing.Size(371, 265);
+            this.dtgEndereco.TabIndex = 82;
+            // 
             // EnderecoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 479);
+            this.ClientSize = new System.Drawing.Size(809, 479);
+            this.Controls.Add(this.dtgEndereco);
             this.Controls.Add(this.btPesquisar);
             this.Controls.Add(this.btCancelar);
             this.Controls.Add(this.btAvancar);
@@ -309,9 +321,12 @@ namespace Fortech_TP3A1.Forms
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Endereço";
             this.panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgEndereco)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.DataGridView dtgEndereco;
 
         private System.Windows.Forms.Button btPesquisar;
 

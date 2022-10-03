@@ -9,8 +9,8 @@ namespace Fortech_TP3A1.Forms
 {
     public partial class CadastroInfoUsuario : Form
     {
-        private Usuario _usuario;
-        private Endereco _endereco;
+        private readonly Usuario _usuario;
+        private readonly Endereco _endereco;
         private readonly CredenciaisLogin _credenciaisLogin;
 
         public CadastroInfoUsuario(Usuario usuario, Endereco endereco, CredenciaisLogin credenciaisLogin)
@@ -103,14 +103,22 @@ namespace Fortech_TP3A1.Forms
         private void btCancelar_Click(object sender, EventArgs e)
         {
             Close();
-            Application.OpenForms["Form1"]?.Show();
+            if (ContextoGlobal.usuarioLogado.admin)
+            {
+                var formUsuario = new UsuarioForm();
+                formUsuario.Show();
+            }
+            else
+            {
+                Application.OpenForms["Form1"]?.Show();
+            }
         }
 
         private void btAvancar_Click(object sender, EventArgs e)
         {
             if (!ValidarCampos()) return;
             var enderecoForm =
-                new EnderecoForm(MontarObjetoUsuario(), _endereco, _credenciaisLogin);
+                new EnderecoForm(_usuario ?? MontarObjetoUsuario(), _endereco, _credenciaisLogin);
             enderecoForm.Show();
             Close();
         }

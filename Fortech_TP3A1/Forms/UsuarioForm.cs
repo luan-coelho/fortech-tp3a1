@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Fortech_TP3A1.Model;
 using Fortech_TP3A1.Repository;
 
 namespace Fortech_TP3A1.Forms
@@ -28,7 +29,8 @@ namespace Fortech_TP3A1.Forms
             {
                 var idUsuario = (int)dtgUsuario.Rows[e.RowIndex].Cells[1].Value;
                 var form = new CadastroInfoUsuario(_repository.BuscarPeloId(idUsuario));
-                form.ShowDialog();
+                Hide();
+                form.Show();
             }
 
             if (e.ColumnIndex == 10)
@@ -60,13 +62,21 @@ namespace Fortech_TP3A1.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var form = new UsuarioInfoForm(null);
-            form.ShowDialog();
+            Close();
+            var form = new CadastroInfoUsuario(null);
+            form.Show();
         }
 
         private void btAtualizar_Click(object sender, EventArgs e)
         {
             dtgUsuario.DataSource = _repository.BuscarTodos();
+        }
+
+        private void btEncerrarSessao_Click(object sender, EventArgs e)
+        {
+            ContextoGlobal.usuarioLogado = null;
+            Close();
+            Application.OpenForms["AcessoForm"]?.Show();
         }
     }
 }

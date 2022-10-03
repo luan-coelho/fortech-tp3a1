@@ -89,7 +89,15 @@ namespace Fortech_TP3A1.Forms
         private void btCancelar_Click(object sender, EventArgs e)
         {
             Close();
-            Application.OpenForms["Form1"]?.Show();
+            if (ContextoGlobal.usuarioLogado.admin)
+            {
+                var formUsuario = new UsuarioForm();
+                formUsuario.Show();
+            }
+            else
+            {
+                Application.OpenForms["Form1"]?.Show();
+            }
         }
 
         private bool ValidarCampos()
