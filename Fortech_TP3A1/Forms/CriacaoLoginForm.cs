@@ -11,55 +11,32 @@ namespace Fortech_TP3A1.Forms
     public partial class CriacaoLoginForm : Form
     {
         private readonly UsuarioRepository _usuarioRepository = new UsuarioRepository();
+        private readonly LogRepository _logRepository = new LogRepository();
         private Usuario _usuario;
         private Endereco _endereco;
         private CredenciaisLogin _credenciaisLogin;
+        private DateTime horaDataTermosAceito;
 
         public CriacaoLoginForm(Usuario usuario, Endereco endereco, CredenciaisLogin credenciaisLogin)
         {
             InitializeComponent();
+
             _usuario = usuario;
             _endereco = endereco;
             _credenciaisLogin = credenciaisLogin;
+
+            btSalvar.Enabled = false;
+
             if (credenciaisLogin != null)
             {
                 PreencherInputs();
             }
-        }
 
-        private void btSalvar_Click(object sender, EventArgs e)
-        {
-            if (!ValidarCampos()) return;
-
-            try
+            if (usuario.Id != 0)
             {
-                _usuario.email = txEmail.Text;
-                _usuario.senha = txConfirmarSenha.Text;
-                _usuario.ativo = true;
-                if (_usuario.enderecos == null)
-                {
-                    _usuario.enderecos = new List<Endereco>();
-                }
-
-                _usuario.enderecos.Add(_endereco);
-                _usuarioRepository.Salvar(_usuario);
-                Limpar();
-
-                MessageBox.Show("Usuário salvo com sucesso!", "Sucesso", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                ckbTermos.Visible = false;
+                btTermosUso.Visible = false;
             }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message, "Erro ao salvar usuário", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
-        }
-
-        private void btVoltar_Click(object sender, EventArgs e)
-        {
-            var enderecoForm = new EnderecoForm(_usuario, _endereco, MontarObjetoCredenciais());
-            enderecoForm.Show();
-            Close();
         }
 
         private CredenciaisLogin MontarObjetoCredenciais()
@@ -86,20 +63,6 @@ namespace Fortech_TP3A1.Forms
             txEmail.Text = _credenciaisLogin.email;
         }
 
-        private void btCancelar_Click(object sender, EventArgs e)
-        {
-            Close();
-            if (ContextoGlobal.usuarioLogado.admin)
-            {
-                var formUsuario = new UsuarioForm();
-                formUsuario.Show();
-            }
-            else
-            {
-                Application.OpenForms["Form1"]?.Show();
-            }
-        }
-
         private bool ValidarCampos()
         {
             var usuarioRepository = new UsuarioRepository();
@@ -119,16 +82,18 @@ namespace Fortech_TP3A1.Forms
                 return false;
             }
 
-            if (_usuario != null)
+            if (_usuario.Id != 0)
             {
-                var usuarioBanco = usuarioRepository.BuscarPeloId(_usuario.Id);
-                if (usuarioBanco != null)
                 {
-                    if (!usuarioBanco.email.Equals(txEmail.Text))
+                    var usuarioBanco = usuarioRepository.BuscarPeloId(_usuario.Id);
+                    if (usuarioBanco != null)
                     {
-                        if (VerificarSeExisteEmailCadastrado(usuarioRepository) == false)
+                        if (!usuarioBanco.email.Equals(txEmail.Text))
                         {
-                            return false;
+                            if (VerificarSeExisteEmailCadastrado(usuarioRepository) == false)
+                            {
+                                return false;
+                            }
                         }
                     }
                 }
@@ -170,6 +135,87 @@ namespace Fortech_TP3A1.Forms
             }
 
             return true;
+        }
+
+        public bool TermosAceito()
+        {
+            if (ckbTermos.Checked) return true;
+            MessageBox.Show("Aceite os termos para concluir o cadastro", "Termos",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+        }
+
+        private void ckbTermos_Click(object sender, EventArgs e)
+        {
+            btSalvar.Enabled = ckbTermos.Checked;
+            if (ckbTermos.Checked)
+            {
+                horaDataTermosAceito = DateTime.Now;
+            }
+        }
+
+        private void btVoltar_Click_1(object sender, EventArgs e)
+        {
+            var enderecoForm = new EnderecoForm(_usuario, _endereco, MontarObjetoCredenciais());
+            enderecoForm.Show();
+            Close();
+        }
+
+        private void btSalvar_Click_1(object sender, EventArgs e)
+        {
+            if (!ValidarCampos() && !TermosAceito()) return;
+
+            try
+            {
+                _usuario.email = txEmail.Text;
+                _usuario.senha = txConfirmarSenha.Text;
+                _usuario.ativo = true;
+                if (_usuario.enderecos == null)
+                {
+                    _usuario.enderecos = new List<Endereco>();
+                }
+
+                if (_usuario.Id == 0)
+                {
+                    _usuario.enderecos.Add(_endereco);
+                    _usuarioRepository.Salvar(_usuario);
+                }
+                else
+                {
+                    _usuarioRepository.Atualizar(_usuario);
+                }
+
+                // var usuarioBanco = _usuarioRepository.BuscarPeloCpf(ContextoGlobal.cpf);
+                // _logRepository.Salvar("Usuário com id "+ usuarioBanco.Id + " aceitou os termos em " + horaDataTermosAceito);
+                Limpar();
+                MessageBox.Show("Usuário salvo com sucesso!", "Sucesso", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Erro ao salvar usuário", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void btCancelar_Click_1(object sender, EventArgs e)
+        {
+            Close();
+            if (ContextoGlobal.usuarioLogado != null && ContextoGlobal.usuarioLogado.admin)
+            {
+                var formUsuario = new UsuarioForm();
+                formUsuario.Show();
+            }
+            else
+            {
+                Application.OpenForms["Form1"]?.Show();
+            }
+        }
+
+        private void btTermosUso_Click(object sender, EventArgs e)
+        {
+            var form = new TermosForm();
+            form.ShowDialog();
         }
     }
 }

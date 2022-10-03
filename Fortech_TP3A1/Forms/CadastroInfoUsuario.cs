@@ -120,6 +120,7 @@ namespace Fortech_TP3A1.Forms
             var enderecoForm =
                 new EnderecoForm(_usuario ?? MontarObjetoUsuario(), _endereco, _credenciaisLogin);
             enderecoForm.Show();
+            ContextoGlobal.cpf = txCpf.Text;
             Close();
         }
 
@@ -193,7 +194,6 @@ namespace Fortech_TP3A1.Forms
                 txCpf.Text = "";
                 return false;
             }
-
             return true;
         }
     }

@@ -99,11 +99,22 @@
     <Compile Include="Forms\HomeForm.Designer.cs">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TermosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TermosForm.Designer.cs">
+      <DependentUpon>TermosForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UsuarioForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\UsuarioForm.Designer.cs">
       <DependentUpon>UsuarioForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fortechDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>fortechDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ContextoGlobal.cs" />
@@ -135,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TermosForm.resx">
+      <DependentUpon>TermosForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UsuarioForm.resx">
       <DependentUpon>UsuarioForm.cs</DependentUpon>
@@ -313,6 +327,17 @@
     </None>
     <None Include="Connected Services\CorreiosService\Fortech_TP3A1.CorreiosService.VerificaSeTodosObjetosCanceladosResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="fortechDataSet.xsc">
+      <DependentUpon>fortechDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="fortechDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>fortechDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="fortechDataSet.xss">
+      <DependentUpon>fortechDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -31,24 +31,30 @@ namespace Fortech_TP3A1.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgUsuario = new System.Windows.Forms.DataGridView();
             this.clmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmcpfcnpj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmDesabilitar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clmCpf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmRg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmCnpj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmDataNascimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmAdmin = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clmAtivo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.clmEditar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.usuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fortechDataSet = new Fortech_TP3A1.fortechDataSet();
             this.btNovo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btEncerrarSessao = new System.Windows.Forms.Button();
             this.lbGerencia = new System.Windows.Forms.Label();
             this.btAtualizar = new System.Windows.Forms.Button();
+            this.usuarioTableAdapter = new Fortech_TP3A1.fortechDataSetTableAdapters.UsuarioTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dtgUsuario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fortechDataSet)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,11 +65,13 @@ namespace Fortech_TP3A1.Forms
             this.dtgUsuario.AllowUserToResizeColumns = false;
             this.dtgUsuario.AllowUserToResizeRows = false;
             this.dtgUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgUsuario.AutoGenerateColumns = false;
             this.dtgUsuario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgUsuario.BackgroundColor = System.Drawing.Color.White;
             this.dtgUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgUsuario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.clmId, this.clmNome, this.clmEmail, this.clmcpfcnpj, this.clmDesabilitar, this.clmRg, this.clmCnpj, this.clmDataNascimento, this.clmAdmin, this.clmEditar });
+            this.dtgUsuario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.clmId, this.clmNome, this.clmEmail, this.clmCpf, this.clmRg, this.clmCnpj, this.clmDataNascimento, this.clmAdmin, this.clmAtivo, this.clmEditar });
+            this.dtgUsuario.DataSource = this.usuarioBindingSource;
             this.dtgUsuario.Location = new System.Drawing.Point(12, 115);
             this.dtgUsuario.MultiSelect = false;
             this.dtgUsuario.Name = "dtgUsuario";
@@ -78,7 +86,7 @@ namespace Fortech_TP3A1.Forms
             // 
             // clmId
             // 
-            this.clmId.DataPropertyName = "id";
+            this.clmId.DataPropertyName = "Id";
             this.clmId.HeaderText = "Id";
             this.clmId.Name = "clmId";
             this.clmId.ReadOnly = true;
@@ -86,58 +94,58 @@ namespace Fortech_TP3A1.Forms
             // clmNome
             // 
             this.clmNome.DataPropertyName = "nome";
-            this.clmNome.HeaderText = "Nome";
+            this.clmNome.HeaderText = "nome";
             this.clmNome.Name = "clmNome";
             this.clmNome.ReadOnly = true;
             // 
             // clmEmail
             // 
             this.clmEmail.DataPropertyName = "email";
-            this.clmEmail.HeaderText = "Email";
+            this.clmEmail.HeaderText = "email";
             this.clmEmail.Name = "clmEmail";
             this.clmEmail.ReadOnly = true;
             // 
-            // clmcpfcnpj
+            // clmCpf
             // 
-            this.clmcpfcnpj.DataPropertyName = "cpf";
-            this.clmcpfcnpj.HeaderText = "CPF/CNPJ";
-            this.clmcpfcnpj.Name = "clmcpfcnpj";
-            this.clmcpfcnpj.ReadOnly = true;
-            // 
-            // clmDesabilitar
-            // 
-            this.clmDesabilitar.DataPropertyName = "ativo";
-            this.clmDesabilitar.HeaderText = "Ativo";
-            this.clmDesabilitar.Name = "clmDesabilitar";
-            this.clmDesabilitar.ReadOnly = true;
+            this.clmCpf.DataPropertyName = "cpf";
+            this.clmCpf.HeaderText = "cpf";
+            this.clmCpf.Name = "clmCpf";
+            this.clmCpf.ReadOnly = true;
             // 
             // clmRg
             // 
             this.clmRg.DataPropertyName = "rg";
-            this.clmRg.HeaderText = "RG";
+            this.clmRg.HeaderText = "rg";
             this.clmRg.Name = "clmRg";
             this.clmRg.ReadOnly = true;
             // 
             // clmCnpj
             // 
             this.clmCnpj.DataPropertyName = "cnpj";
-            this.clmCnpj.HeaderText = "CNPJ";
+            this.clmCnpj.HeaderText = "cnpj";
             this.clmCnpj.Name = "clmCnpj";
             this.clmCnpj.ReadOnly = true;
             // 
             // clmDataNascimento
             // 
             this.clmDataNascimento.DataPropertyName = "dataNascimento";
-            this.clmDataNascimento.HeaderText = "Nascimento";
+            this.clmDataNascimento.HeaderText = "dataNascimento";
             this.clmDataNascimento.Name = "clmDataNascimento";
             this.clmDataNascimento.ReadOnly = true;
             // 
             // clmAdmin
             // 
             this.clmAdmin.DataPropertyName = "admin";
-            this.clmAdmin.HeaderText = "Admin";
+            this.clmAdmin.HeaderText = "admin";
             this.clmAdmin.Name = "clmAdmin";
             this.clmAdmin.ReadOnly = true;
+            // 
+            // clmAtivo
+            // 
+            this.clmAtivo.DataPropertyName = "ativo";
+            this.clmAtivo.HeaderText = "ativo";
+            this.clmAtivo.Name = "clmAtivo";
+            this.clmAtivo.ReadOnly = true;
             // 
             // clmEditar
             // 
@@ -153,6 +161,17 @@ namespace Fortech_TP3A1.Forms
             this.clmEditar.ReadOnly = true;
             this.clmEditar.Text = "Editar";
             this.clmEditar.UseColumnTextForButtonValue = true;
+            // 
+            // usuarioBindingSource
+            // 
+            this.usuarioBindingSource.DataMember = "Usuario";
+            this.usuarioBindingSource.DataSource = this.fortechDataSet;
+            // 
+            // fortechDataSet
+            // 
+            this.fortechDataSet.DataSetName = "fortechDataSet";
+            this.fortechDataSet.Namespace = "http://tempuri.org/fortechDataSet.xsd";
+            this.fortechDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btNovo
             // 
@@ -220,6 +239,10 @@ namespace Fortech_TP3A1.Forms
             this.btAtualizar.UseVisualStyleBackColor = false;
             this.btAtualizar.Click += new System.EventHandler(this.btAtualizar_Click);
             // 
+            // usuarioTableAdapter
+            // 
+            this.usuarioTableAdapter.ClearBeforeFill = true;
+            // 
             // UsuarioForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -234,6 +257,8 @@ namespace Fortech_TP3A1.Forms
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuários";
             ((System.ComponentModel.ISupportInitialize)(this.dtgUsuario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fortechDataSet)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
         }
@@ -242,29 +267,28 @@ namespace Fortech_TP3A1.Forms
 
         private System.Windows.Forms.Button btAtualizar;
 
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmCnpj;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmDataNascimento;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn clmAdmin;
-
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRg;
-
         private System.Windows.Forms.Label lbGerencia;
 
         private System.Windows.Forms.Panel panel1;
 
         private System.Windows.Forms.Button btNovo;
 
-        private System.Windows.Forms.DataGridViewCheckBoxColumn clmDesabilitar;
-
-        private System.Windows.Forms.DataGridViewButtonColumn clmEditar;
-
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmNome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmcpfcnpj;
-
         private System.Windows.Forms.DataGridView dtgUsuario;
 
         #endregion
+
+        private fortechDataSet fortechDataSet;
+        private System.Windows.Forms.BindingSource usuarioBindingSource;
+        private fortechDataSetTableAdapters.UsuarioTableAdapter usuarioTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmNome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmEmail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmCpf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmRg;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmCnpj;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmDataNascimento;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn clmAdmin;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn clmAtivo;
+        private System.Windows.Forms.DataGridViewButtonColumn clmEditar;
     }
 }

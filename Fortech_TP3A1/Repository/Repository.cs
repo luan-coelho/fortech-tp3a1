@@ -9,5 +9,7 @@ namespace Fortech_TP3A1.Repository
         public abstract List<T> BuscarTodos();
 
         public abstract void Salvar(T objeto);
+        
+        public abstract void Atualizar(T objeto);
     }
 }

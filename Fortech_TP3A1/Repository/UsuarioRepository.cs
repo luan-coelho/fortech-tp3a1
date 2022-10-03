@@ -10,6 +10,11 @@ namespace Fortech_TP3A1.Repository
         public Usuario BuscarPeloId(int id)
         {
             return DbContext.usuario.First(x => x.Id == id);
+        } 
+        
+        public Usuario BuscarPeloCpf(string cpf)
+        {
+            return DbContext.usuario.First(x => x.cpf == cpf);
         }
 
         public Usuario Autenticado(string email, string senha)
@@ -39,6 +44,12 @@ namespace Fortech_TP3A1.Repository
             DbContext.usuario.Add(usuario);
             DbContext.SaveChanges();
         }
+        
+        public override void Atualizar(Usuario usuario)
+        {
+            DbContext.Entry(usuario).State = EntityState.Modified;
+            DbContext.SaveChanges();
+        }
 
         public void AlterarAtividade(int id)
         {
@@ -50,7 +61,7 @@ namespace Fortech_TP3A1.Repository
 
             DbContext.SaveChanges();
         }
-        
+
         public void AlterarPermissao(int id)
         {
             var usuario = DbContext.usuario.First(x => x.Id == id);
