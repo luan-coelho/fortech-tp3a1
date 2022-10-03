@@ -7,6 +7,8 @@ namespace Fortech_TP3A1.Forms
 {
     public partial class AcessoForm : Form
     {
+        private LogRepository _logRepository = new LogRepository();
+
         public AcessoForm()
         {
             InitializeComponent();
@@ -42,19 +44,14 @@ namespace Fortech_TP3A1.Forms
                     homeForm.Show();
                 }
                 Hide();
+                _logRepository.Salvar("Usuário realizou login");
             }
         }
-
-        private void btCadastrar_Click(object sender, EventArgs e)
+        
+        private void btVoltar_Click(object sender, EventArgs e)
         {
-            var cadastrarForm = new CadastrarForm();
-            cadastrarForm.Show();
-            Hide();
-        }
-
-        private void AcessoForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.OpenForms["Form1"]?.Close();
+            Close();
+            Application.OpenForms["Form1"]?.Show();
         }
     }
 }

@@ -17,6 +17,7 @@ namespace Fortech_TP3A1.Forms
             dtgUsuario.DataSource = usuarios;
             // ReSharper disable once PossibleNullReferenceException
             dtgUsuario.Columns["senha"].Visible = false;
+            dtgUsuario.Columns["enderecos"].Visible = false;
         }
 
         private void dtgUsuario_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -33,29 +34,53 @@ namespace Fortech_TP3A1.Forms
                 form.Show();
             }
 
-            if (e.ColumnIndex == 10)
+            var cells = dtgUsuario.Rows[e.RowIndex].Cells;
+
+            if (e.ColumnIndex == 11)
             {
                 var idUsuario = (int)dtgUsuario.Rows[e.RowIndex].Cells[1].Value;
 
-                if (!(bool)dtgUsuario.Rows[e.RowIndex].Cells[10].Value)
-                {
-                    _repository.AlterarAtividade(idUsuario);
-                    dtgUsuario.DataSource = _repository.BuscarTodos();
-                    MessageBox.Show("Usuário ativado com sucesso!", "Sucesso", MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                    _logRepository.Salvar("Usuário logado ativou o usuário com id " + idUsuario);
-                    return;
-                }
+                var condicao = !(bool)dtgUsuario.Rows[e.RowIndex].Cells[11].Value;
 
-                if (MessageBox.Show("Você tem certeza que deseja desativar este usuário?", "Confirmação",
+                if (MessageBox.Show(
+                        "Você tem certeza que deseja " + (condicao ? "ativar" : "desativar") + " este usuário?",
+                        "Confirmação",
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     _repository.AlterarAtividade(idUsuario);
                     dtgUsuario.DataSource = _repository.BuscarTodos();
-                    MessageBox.Show("Usuário desativado com sucesso!", "Sucesso", MessageBoxButtons.OK,
+                    MessageBox.Show("Usuário " + (condicao ? "ativado" : "desativado") + " com sucesso!", "Sucesso",
+                        MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
-                    _logRepository.Salvar("Usuário logado desativou o usuário com id " + idUsuario);
+                    _logRepository.Salvar("Usuário logado " + (condicao ? "ativou" : "desativou") +
+                                          " o usuário com id " + idUsuario);
+                }
+            }
+
+            if (e.ColumnIndex == 10)
+            {
+                var idUsuario = (int)dtgUsuario.Rows[e.RowIndex].Cells[1].Value;
+
+                var condicao = !(bool)dtgUsuario.Rows[e.RowIndex].Cells[10].Value;
+
+                if (MessageBox.Show(
+                        "Você tem certeza que deseja " + (condicao ? "adicionar" : "remover") +
+                        " a permissão de administrador deste usuário?",
+                        "Confirmação",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    _repository.AlterarPermissao(idUsuario);
+                    dtgUsuario.DataSource = _repository.BuscarTodos();
+                    MessageBox.Show(
+                        "Permissão de administrador " + (condicao ? "adicionada" : "removida") + " com sucesso!",
+                        "Sucesso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    _logRepository.Salvar("Usuário logado " + (condicao ? "adicionou" : "removeu") +
+                                          " permissão de administrador ao usuário com id " +
+                                          idUsuario);
                 }
             }
         }
@@ -77,6 +102,7 @@ namespace Fortech_TP3A1.Forms
             ContextoGlobal.usuarioLogado = null;
             Close();
             Application.OpenForms["AcessoForm"]?.Show();
+            _logRepository.Salvar("Usuário encerrou a sessão");
         }
     }
 }

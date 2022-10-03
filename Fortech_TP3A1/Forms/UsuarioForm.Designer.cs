@@ -45,10 +45,9 @@ namespace Fortech_TP3A1.Forms
             this.clmEditar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btNovo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btEncerrarSessao = new System.Windows.Forms.Button();
             this.lbGerencia = new System.Windows.Forms.Label();
             this.btAtualizar = new System.Windows.Forms.Button();
-            this.btEncerrarSessao = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgUsuario)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -174,7 +173,6 @@ namespace Fortech_TP3A1.Forms
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.panel1.Controls.Add(this.btEncerrarSessao);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lbGerencia);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -182,21 +180,26 @@ namespace Fortech_TP3A1.Forms
             this.panel1.Size = new System.Drawing.Size(668, 54);
             this.panel1.TabIndex = 2;
             // 
-            // label1
+            // btEncerrarSessao
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(211, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(247, 29);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Gerencia de Usuários";
+            this.btEncerrarSessao.BackColor = System.Drawing.Color.Red;
+            this.btEncerrarSessao.FlatAppearance.BorderSize = 0;
+            this.btEncerrarSessao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btEncerrarSessao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btEncerrarSessao.ForeColor = System.Drawing.Color.White;
+            this.btEncerrarSessao.Location = new System.Drawing.Point(534, 14);
+            this.btEncerrarSessao.Name = "btEncerrarSessao";
+            this.btEncerrarSessao.Size = new System.Drawing.Size(121, 27);
+            this.btEncerrarSessao.TabIndex = 4;
+            this.btEncerrarSessao.Text = "Encerrar Sessão";
+            this.btEncerrarSessao.UseVisualStyleBackColor = false;
+            this.btEncerrarSessao.Click += new System.EventHandler(this.btEncerrarSessao_Click);
             // 
             // lbGerencia
             // 
             this.lbGerencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbGerencia.ForeColor = System.Drawing.Color.White;
-            this.lbGerencia.Location = new System.Drawing.Point(12, 9);
+            this.lbGerencia.Location = new System.Drawing.Point(12, 12);
             this.lbGerencia.Name = "lbGerencia";
             this.lbGerencia.Size = new System.Drawing.Size(247, 29);
             this.lbGerencia.TabIndex = 0;
@@ -217,21 +220,6 @@ namespace Fortech_TP3A1.Forms
             this.btAtualizar.UseVisualStyleBackColor = false;
             this.btAtualizar.Click += new System.EventHandler(this.btAtualizar_Click);
             // 
-            // btEncerrarSessao
-            // 
-            this.btEncerrarSessao.BackColor = System.Drawing.Color.Red;
-            this.btEncerrarSessao.FlatAppearance.BorderSize = 0;
-            this.btEncerrarSessao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btEncerrarSessao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btEncerrarSessao.ForeColor = System.Drawing.Color.White;
-            this.btEncerrarSessao.Location = new System.Drawing.Point(534, 14);
-            this.btEncerrarSessao.Name = "btEncerrarSessao";
-            this.btEncerrarSessao.Size = new System.Drawing.Size(121, 27);
-            this.btEncerrarSessao.TabIndex = 4;
-            this.btEncerrarSessao.Text = "Encerrar Sessão";
-            this.btEncerrarSessao.UseVisualStyleBackColor = false;
-            this.btEncerrarSessao.Click += new System.EventHandler(this.btEncerrarSessao_Click);
-            // 
             // UsuarioForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,8 +239,6 @@ namespace Fortech_TP3A1.Forms
         }
 
         private System.Windows.Forms.Button btEncerrarSessao;
-
-        private System.Windows.Forms.Label label1;
 
         private System.Windows.Forms.Button btAtualizar;
 

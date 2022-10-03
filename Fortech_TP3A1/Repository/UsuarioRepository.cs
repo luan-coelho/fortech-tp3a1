@@ -50,5 +50,16 @@ namespace Fortech_TP3A1.Repository
 
             DbContext.SaveChanges();
         }
+        
+        public void AlterarPermissao(int id)
+        {
+            var usuario = DbContext.usuario.First(x => x.Id == id);
+            DbContext.Entry(usuario).State = EntityState.Modified;
+
+            if (usuario == null) return;
+            usuario.admin = !usuario.admin;
+
+            DbContext.SaveChanges();
+        }
     }
 }

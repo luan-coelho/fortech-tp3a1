@@ -75,12 +75,6 @@
     <Compile Include="Forms\AcessoForm.Designer.cs">
       <DependentUpon>AcessoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CadastrarUsuarioForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CadastrarUsuarioForm.Designer.cs">
-      <DependentUpon>CadastrarUsuarioForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\CadastroInfoUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,9 +123,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AcessoForm.resx">
       <DependentUpon>AcessoForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CadastrarUsuarioForm.resx">
-      <DependentUpon>CadastrarUsuarioForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CadastroInfoUsuario.resx">
       <DependentUpon>CadastroInfoUsuario.cs</DependentUpon>

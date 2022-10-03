@@ -103,7 +103,7 @@ namespace Fortech_TP3A1.Forms
         private void btCancelar_Click(object sender, EventArgs e)
         {
             Close();
-            if (ContextoGlobal.usuarioLogado.admin)
+            if (ContextoGlobal.usuarioLogado != null && ContextoGlobal.usuarioLogado.admin)
             {
                 var formUsuario = new UsuarioForm();
                 formUsuario.Show();
