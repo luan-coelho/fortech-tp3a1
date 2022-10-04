@@ -7,7 +7,7 @@ namespace Fortech_TP3A1.Forms
 {
     public partial class AcessoForm : Form
     {
-        private LogRepository _logRepository = new LogRepository();
+        private readonly LogRepository _logRepository = new LogRepository();
 
         public AcessoForm()
         {
@@ -20,34 +20,38 @@ namespace Fortech_TP3A1.Forms
             var email = txEmail.Text;
             var senha = txSenha.Text;
 
-            var usuario = usuarioRepository.Autenticado(email, senha);
-            if (usuario == null)
+            Usuario usuario;
+            try
+            {
+                usuario = usuarioRepository.Autenticado(email, senha);
+            }
+            catch (Exception)
             {
                 MessageBox.Show("Login ou senha inválidos", "Ácesso negado", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                    MessageBoxIcon.Error); 
+                return;
+            }
+
+            MessageBox.Show(usuario?.nome + " seja bem-vindo!", "Logado com sucesso", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+            ContextoGlobal.usuarioLogado = usuario;
+            if (usuario != null && usuario.admin)
+            {
+                var usuarioForm = new UsuarioForm();
+                txEmail.Text = "";
+                txSenha.Text = "";
+                usuarioForm.Show();
             }
             else
             {
-                MessageBox.Show(usuario.nome + " seja bem-vindo!", "Logado com sucesso", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                ContextoGlobal.usuarioLogado = usuario;
-                if (usuario.admin)
-                {
-                    var usuarioForm = new UsuarioForm();
-                    txEmail.Text = "";
-                    txSenha.Text = "";
-                    usuarioForm.Show();
-                }
-                else
-                {
-                    var homeForm = new HomeForm();
-                    homeForm.Show();
-                }
-                Hide();
-                _logRepository.Salvar("Usuário realizou login");
+                var homeForm = new HomeForm();
+                homeForm.Show();
             }
+
+            Hide();
+            _logRepository.Salvar("Usuário realizou login");
         }
-        
+
         private void btVoltar_Click(object sender, EventArgs e)
         {
             Close();

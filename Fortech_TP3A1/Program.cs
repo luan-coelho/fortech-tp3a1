@@ -33,9 +33,10 @@ namespace Fortech_TP3A1
         public DbSet<Eletronico> eletronico { get; set; }
 
         public DbSet<SolicitacaoServico> solicitacaoServico { get; set; }
-
+        
+        public DbSet<TipoServico> tipoServicos { get; set; }
+        
         public DbSet<Log> log { get; set; }
-
 
         protected override void OnModelCreating(DbModelBuilder dbModelBuilder)
         {

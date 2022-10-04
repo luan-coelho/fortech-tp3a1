@@ -32,6 +32,7 @@
             this.btCadastrar = new System.Windows.Forms.Button();
             this.btSair = new System.Windows.Forms.Button();
             this.lbGerencia = new System.Windows.Forms.Label();
+            this.bbTeste = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btLogin
@@ -77,12 +78,24 @@
             this.lbGerencia.TabIndex = 4;
             this.lbGerencia.Text = "Fortech Manutenções";
             // 
+            // bbTeste
+            // 
+            this.bbTeste.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbTeste.Location = new System.Drawing.Point(276, 20);
+            this.bbTeste.Name = "bbTeste";
+            this.bbTeste.Size = new System.Drawing.Size(118, 52);
+            this.bbTeste.TabIndex = 5;
+            this.bbTeste.Text = "Teste";
+            this.bbTeste.UseVisualStyleBackColor = true;
+            this.bbTeste.Click += new System.EventHandler(this.bbTeste_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(402, 154);
+            this.Controls.Add(this.bbTeste);
             this.Controls.Add(this.lbGerencia);
             this.Controls.Add(this.btSair);
             this.Controls.Add(this.btCadastrar);
@@ -94,6 +107,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button bbTeste;
 
         private System.Windows.Forms.Label lbGerencia;
 

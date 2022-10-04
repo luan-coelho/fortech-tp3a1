@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fortech_TP3A1.Model
 {
     public class SolicitacaoServico
     {
-        [Key]
-        public int id { get; set; }
+        [Key] public int id { get; set; }
 
         public string nome { get; set; }
 
@@ -18,7 +13,8 @@ namespace Fortech_TP3A1.Model
 
         public decimal valor { get; set; }
 
-        public Eletronico eletronico { get; set; }
+        public List<Eletronico> eletronico { get; set; }
 
+        public List<TipoServico> tipoServicos { get; set; }
     }
 }

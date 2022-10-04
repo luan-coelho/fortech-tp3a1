@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Fortech_TP3A1.CorreiosService;
 using Fortech_TP3A1.Model;
 using Fortech_TP3A1.Model.Dto;
+using Fortech_TP3A1.Repository;
 using Exception = System.Exception;
 
 namespace Fortech_TP3A1.Forms
@@ -12,6 +13,7 @@ namespace Fortech_TP3A1.Forms
         private readonly Usuario _usuario;
         private readonly Endereco _endereco;
         private readonly CredenciaisLogin _credenciaisLogin;
+        private readonly EnderecoDao _enderecoDao = new EnderecoDao();
 
         public EnderecoForm(Usuario usuario, Endereco endereco, CredenciaisLogin credenciaisLogin)
         {
@@ -25,9 +27,10 @@ namespace Fortech_TP3A1.Forms
                 PreencherInputs();
             }
 
-            if (usuario.enderecos != null)
+            if (usuario.Id != 0)
             {
-                dtgEndereco.DataSource = usuario.enderecos;
+                var enderecos = _enderecoDao.BuscarPeloIdUsuario(usuario.Id);
+                dtgEndereco.DataSource = enderecos;
             }
         }
 
