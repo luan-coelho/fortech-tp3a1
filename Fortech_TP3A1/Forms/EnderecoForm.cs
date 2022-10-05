@@ -13,7 +13,6 @@ namespace Fortech_TP3A1.Forms
         private readonly Usuario _usuario;
         private readonly Endereco _endereco;
         private readonly CredenciaisLogin _credenciaisLogin;
-        private readonly EnderecoDao _enderecoDao = new EnderecoDao();
 
         public EnderecoForm(Usuario usuario, Endereco endereco, CredenciaisLogin credenciaisLogin)
         {
@@ -27,11 +26,9 @@ namespace Fortech_TP3A1.Forms
                 PreencherInputs();
             }
 
-            if (usuario.Id != 0)
-            {
-                var enderecos = _enderecoDao.BuscarPeloIdUsuario(usuario.Id);
-                dtgEndereco.DataSource = enderecos;
-            }
+            if (usuario.Id == 0) return;
+            var enderecos = new UsuarioRepository().BuscarPeloId(usuario.Id).enderecos;
+            dtgEndereco.DataSource = enderecos;
         }
 
         public void PreencherInputs()

@@ -48,6 +48,7 @@ namespace Fortech_TP3A1.Forms
             this.fortechDataSet = new Fortech_TP3A1.fortechDataSet();
             this.btNovo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btVoltar = new System.Windows.Forms.Button();
             this.btEncerrarSessao = new System.Windows.Forms.Button();
             this.lbGerencia = new System.Windows.Forms.Label();
             this.btAtualizar = new System.Windows.Forms.Button();
@@ -191,6 +192,7 @@ namespace Fortech_TP3A1.Forms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel1.Controls.Add(this.btVoltar);
             this.panel1.Controls.Add(this.btEncerrarSessao);
             this.panel1.Controls.Add(this.lbGerencia);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -198,6 +200,21 @@ namespace Fortech_TP3A1.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(668, 54);
             this.panel1.TabIndex = 2;
+            // 
+            // btVoltar
+            // 
+            this.btVoltar.BackColor = System.Drawing.Color.DarkGray;
+            this.btVoltar.FlatAppearance.BorderSize = 0;
+            this.btVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btVoltar.ForeColor = System.Drawing.Color.White;
+            this.btVoltar.Location = new System.Drawing.Point(452, 11);
+            this.btVoltar.Name = "btVoltar";
+            this.btVoltar.Size = new System.Drawing.Size(76, 33);
+            this.btVoltar.TabIndex = 4;
+            this.btVoltar.Text = "Voltar";
+            this.btVoltar.UseVisualStyleBackColor = false;
+            this.btVoltar.Click += new System.EventHandler(this.btVoltar_Click);
             // 
             // btEncerrarSessao
             // 
@@ -262,6 +279,8 @@ namespace Fortech_TP3A1.Forms
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button btVoltar;
 
         private System.Windows.Forms.Button btEncerrarSessao;
 

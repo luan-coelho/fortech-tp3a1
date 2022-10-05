@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using Fortech_TP3A1.Forms;
-using Fortech_TP3A1.Repository;
 
 namespace Fortech_TP3A1
 {
@@ -34,12 +33,6 @@ namespace Fortech_TP3A1
         private void btSair_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void bbTeste_Click(object sender, EventArgs e)
-        {
-            var enderecoDao = new EnderecoDao();
-            enderecoDao.BuscarPeloIdUsuario(5002);
         }
     }
 }

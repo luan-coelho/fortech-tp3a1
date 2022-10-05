@@ -9,17 +9,20 @@ namespace Fortech_TP3A1.Repository
     {
         public Usuario BuscarPeloId(int id)
         {
-            return DbContext.usuario.First(x => x.Id == id);
-        } 
-        
-        public Usuario BuscarPeloCpf(string cpf)
+            return DbContext.usuario
+                .Include(usuario => usuario.enderecos)
+                .Include(usuario => usuario.solicitacoes) 
+                .FirstOrDefault(x => x.Id == id);
+        }
+
+        public List<Usuario> BuscarTodosPeloNome(string nome)
         {
-            return DbContext.usuario.First(x => x.cpf == cpf);
+            return DbContext.usuario.Where(usuario => usuario.nome.Contains(nome)).ToList();
         }
 
         public Usuario Autenticado(string email, string senha)
         {
-            return DbContext.usuario.First(x => x.email == email && x.senha == senha);
+            return DbContext.usuario.FirstOrDefault(x => x.email == email && x.senha == senha);
         }
 
         public bool ExistePeloCpf(string cpf)
@@ -48,6 +51,7 @@ namespace Fortech_TP3A1.Repository
         public override void Atualizar(Usuario usuario)
         {
             DbContext.Entry(usuario).State = EntityState.Modified;
+            DbContext.Entry(usuario.solicitacoes).State = EntityState.Added;
             DbContext.SaveChanges();
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Fortech_TP3A1.Forms.Admin;
 using Fortech_TP3A1.Model;
 using Fortech_TP3A1.Repository;
 
@@ -28,19 +29,35 @@ namespace Fortech_TP3A1.Forms
             catch (Exception)
             {
                 MessageBox.Show("Login ou senha inválidos", "Ácesso negado", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error); 
+                    MessageBoxIcon.Error);
+                return;
+            }
+
+            if (usuario == null)
+            {
+                MessageBox.Show("Login ou senha inválidos", "Ácesso negado", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!usuario.ativo)
+            {
+                MessageBox.Show("Você não tem mais permissão de acessar a plataforma", "Usuário desativado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return;
             }
 
             MessageBox.Show(usuario?.nome + " seja bem-vindo!", "Logado com sucesso", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
             ContextoGlobal.usuarioLogado = usuario;
-            if (usuario != null && usuario.admin)
+
+            if (usuario.admin)
             {
-                var usuarioForm = new UsuarioForm();
+                var form = new AdminHomeForm();
                 txEmail.Text = "";
                 txSenha.Text = "";
-                usuarioForm.Show();
+                form.Show();
             }
             else
             {

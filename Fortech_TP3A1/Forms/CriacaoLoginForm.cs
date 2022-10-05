@@ -188,12 +188,21 @@ namespace Fortech_TP3A1.Forms
                 // var usuarioBanco = _usuarioRepository.BuscarPeloCpf(ContextoGlobal.cpf);
                 // _logRepository.Salvar("Usuário com id "+ usuarioBanco.Id + " aceitou os termos em " + horaDataTermosAceito);
                 Limpar();
-                MessageBox.Show("Usuário salvo com sucesso!", "Sucesso", MessageBoxButtons.OK,
+                MessageBox.Show("Salvo com sucesso!", "Sucesso", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
+                Close();
+                if (ContextoGlobal.usuarioLogado == null)
+                {
+                    new AcessoForm().Show();
+                }
+                else
+                {
+                    new UsuarioForm().Show();
+                }
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message, "Erro ao salvar usuário", MessageBoxButtons.OK,
+                MessageBox.Show(exception.Message, "Erro ao salvar", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }

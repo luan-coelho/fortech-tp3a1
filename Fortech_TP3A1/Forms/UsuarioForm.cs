@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Fortech_TP3A1.Forms.Admin;
 using Fortech_TP3A1.Model;
 using Fortech_TP3A1.Repository;
 
@@ -101,6 +102,13 @@ namespace Fortech_TP3A1.Forms
             Close();
             Application.OpenForms["AcessoForm"]?.Show();
             _logRepository.Salvar("Usuário encerrou a sessão");
+        }
+
+        private void btVoltar_Click(object sender, EventArgs e)
+        {
+            Close();
+            var form = new AdminHomeForm();
+            form.Show();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Fortech_TP3A1.Model
 {
@@ -13,8 +12,34 @@ namespace Fortech_TP3A1.Model
 
         public decimal valor { get; set; }
 
-        public List<Eletronico> eletronico { get; set; }
+        public Eletronico eletronico { get; set; }
 
-        public List<TipoServico> tipoServicos { get; set; }
+        public TipoServico tipoServico { get; set; }
+        
+        public int? Usuario_Id { get; set; }
+
+        public SolicitacaoServico(string nome, string detalhes, decimal valor, Eletronico eletronico,
+            TipoServico tipoServico)
+        {
+            this.nome = nome;
+            this.detalhes = detalhes;
+            this.valor = valor;
+            this.eletronico = eletronico;
+            this.tipoServico = tipoServico;
+        }
+
+        public SolicitacaoServico()
+        {
+        }
+
+        public SolicitacaoServico(string nome, string detalhes, decimal valor, Eletronico eletronico, TipoServico tipoServico, int? usuarioId)
+        {
+            this.nome = nome;
+            this.detalhes = detalhes;
+            this.valor = valor;
+            this.eletronico = eletronico;
+            this.tipoServico = tipoServico;
+            Usuario_Id = usuarioId;
+        }
     }
 }

@@ -67,8 +67,8 @@ class Log {
 Usuario "1" *-down-> "*" Endereco
 Usuario "1" *-> "*" SolicitacaoServico
 
-SolicitacaoServico "*" --> "*" TipoServico
-SolicitacaoServico "1" *-> "*" Eletronico
+SolicitacaoServico "*" --> "1" TipoServico
+SolicitacaoServico "1" *-> "1" Eletronico
 
 HistoricoServico "1" --> "1" SolicitacaoServico
 
